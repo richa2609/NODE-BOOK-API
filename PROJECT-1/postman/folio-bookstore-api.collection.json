@@ -1,0 +1,118 @@
+{
+  "info": {
+    "name": "Folio Bookstore Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "bookId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Inventory overview",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/overview"
+      }
+    },
+    {
+      "name": "List books",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/books"
+      }
+    },
+    {
+      "name": "Search and filter",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/books?q=clean&genre=Programming&sort=price-low"
+      }
+    },
+    {
+      "name": "Get genres",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/genres"
+      }
+    },
+    {
+      "name": "Create book (JSON)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Clean Code\",\n  \"author\": \"Robert C. Martin\",\n  \"isbn\": \"9780132350884\",\n  \"genre\": \"Programming\",\n  \"description\": \"A practical guide to writing readable software.\",\n  \"price\": 499,\n  \"stock\": 8\n}"
+        },
+        "url": "{{baseUrl}}/api/books"
+      }
+    },
+    {
+      "name": "Get book by id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/books/{{bookId}}"
+      }
+    },
+    {
+      "name": "Update book",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 449,\n  \"stock\": 6\n}"
+        },
+        "url": "{{baseUrl}}/api/books/{{bookId}}"
+      }
+    },
+    {
+      "name": "Record purchase",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"quantity\":2}"
+        },
+        "url": "{{baseUrl}}/api/books/{{bookId}}/buy"
+      }
+    },
+    {
+      "name": "Delete book",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/books/{{bookId}}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "folio-bookstore-api",
+  "version": "2.0.0",
+  "description": "Backend-only REST API for book inventory management using Node.js, Express and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "check": "node --check server.js && node --check controllers/bookController.js && node --check routes/bookRoutes.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.12.1",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
